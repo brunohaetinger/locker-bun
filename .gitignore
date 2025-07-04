@@ -1,3 +1,6 @@
+key.db
+logins.json
+
 # dependencies (bun install)
 node_modules
 
