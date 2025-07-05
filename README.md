@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/locker-bun-logo.png" width="128" alt="Locker Bun Logo" />
+</p>
+
 # locker-bun
 
 It's a PoC Password Manager written with Bun
