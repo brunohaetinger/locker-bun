@@ -22,3 +22,23 @@ bun run src/index.ts init        # sets master password, generates key
 bun run src/index.ts add         # prompts to add a login
 bun run src/index.ts get github.com  # fetches login for github.com
 ```
+
+## Mermaid flows:
+
+### Init
+
+![image](assets/init-flow.jpg)
+
+```mermaid
+flowchart TD
+    A[Init] -->|Prompt master password| B("keyStorage.createMasterKey(password)")
+    B -->|randomBytes| E[encryptionKey]
+    B -->|randomBytes| D[salt]
+    B --> F[fa:fa-key masterKey]
+    D -->|"deriveKey(masterPassword, salt)"| F[fa:fa-key masterKey]
+    F --> I["encrypt(masterKey, encryptionKey)"]
+    E --> I
+    I --> G[iv, ciphertext]
+    D --> H[DB: Insert into master_key]
+    G --> H
+```
