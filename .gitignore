@@ -1,5 +1,6 @@
 key.db
 logins.json
+todo.md
 
 # dependencies (bun install)
 node_modules
