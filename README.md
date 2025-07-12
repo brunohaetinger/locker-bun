@@ -56,4 +56,17 @@ flowchart TD
     E --> F("saveLogins(logins)")
 ```
 
+### Get flow
+
+```mermaid
+flowchart TD
+    A[Get] -->|Prompt master password| B("getEncryptionKey(masterPassword)")
+    B --> Decrypt
+    D("loadLogins()") --> E("{iv, data}")
+    Domain("domain = argv[3]") --> E
+    E --> Decrypt("decrypt(data, key, iv)")
+    Decrypt --> Parse
+    Parse --> Print("Print username, password")
+```
+
 
