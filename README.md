@@ -27,7 +27,7 @@ bun run src/index.ts add         # prompts to add a login
 bun run src/index.ts get github.com  # fetches login for github.com
 ```
 
-## Mermaid flows:
+## Usage flows:
 
 ### Init
 
@@ -44,3 +44,16 @@ flowchart TD
     D --> H[DB: Insert into master_key]
     G --> H
 ```
+
+### Add flow
+
+```mermaid
+flowchart TD
+    A[Add] -->|Prompt master password| B("getEncryptionKey(masterPassword)")
+    B -->|Prompt Domain, Username and Password| C("encrypt({username, password}, key)")
+    D("loadLogins()") --> E("logins[domain] = {iv, data}")
+    C --> E
+    E --> F("saveLogins(logins)")
+```
+
+
