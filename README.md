@@ -31,8 +31,6 @@ bun run src/index.ts get github.com  # fetches login for github.com
 
 ### Init
 
-![image](assets/init-flow.jpg)
-
 ```mermaid
 flowchart TD
     A[Init] -->|Prompt master password| B("keyStorage.createMasterKey(password)")
