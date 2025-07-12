@@ -33,16 +33,15 @@ bun run src/index.ts get github.com  # fetches login for github.com
 
 ```mermaid
 flowchart TD
-    A[Init] -->|Prompt master password| B("keyStorage.createMasterKey(password)")
+    A[Init] -->|Prompt master password| B("createMasterKey(password)")
     B -->|randomBytes| E[encryptionKey]
     B -->|randomBytes| D[salt]
     B --> F[fa:fa-key masterKey]
     D -->|"deriveKey(masterPassword, salt)"| F[fa:fa-key masterKey]
     F --> I["encrypt(masterKey, encryptionKey)"]
     E --> I
-    I --> G[iv, ciphertext]
-    D --> H[DB: Insert into master_key]
-    G --> H
+    I -->|iv, ciphertext| H
+    D --> H["DB: Insert into master_key (salt, iv, ciphertext)"]
 ```
 
 ### Add flow
